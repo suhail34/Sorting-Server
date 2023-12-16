@@ -16,8 +16,6 @@ jobs:
         run: |
           echo "${{secrets.PASSWORD}}" | docker login -u "suhail12" --password-stdin
           docker image build -t suhail12/sorting-server:stable-latest .
-          docker tag suhail12/sorting-server:stable-latest suhail12/sorting-server:stable-${GITHUB_REF/refs\/tags\//}
           docker tag suhail12/sorting-server:stable-latest suhail12/sorting-server:stable-${GITHUB_SHA::8}
           docker push suhail12/sorting-server:stable-latest
-          docker push suhail12/sorting-server:stable-${GITHUB_REF/refs\/tags\//}
           docker push suhail12/sorting-server:stable-${GITHUB_SHA::8}
